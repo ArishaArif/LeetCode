@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int>ans;
+for (int i = 0; i < nums.size(); i++) {
+    ans.push_back(1);
+}
+ for (int i = 1; i < nums.size(); i++) {
+     ans[i] = ans[i - 1] * nums[i - 1];
+}
+ int mul = 1;
+ for (int i = nums.size() - 2; i >= 0; i--) {
+     mul = mul * nums[i + 1];
+     ans[i] = ans[i] * mul;
+ }
+return ans;
+    }
+};
+
+/*
+using two passes:
+Left pass : fills ans[i] with the product of all numbers to the left of index i.
+Right pass :multiplies each ans[i] by the product of all numbers to the right of index i, giving the final product for each position.
+*/
