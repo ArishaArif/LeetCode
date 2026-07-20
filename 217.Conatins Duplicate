@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int>s;
+        for(auto i:nums){
+            if(s.find(i)==s.end()){
+                s.insert(i);
+            }else{
+                return true;
+            }
+        }return false;
+    }
+};
+/*
+again used unordered map to keep account of frequncy of each number incase a number already is in map then instead of continuing checking for rest we return true
+*/
