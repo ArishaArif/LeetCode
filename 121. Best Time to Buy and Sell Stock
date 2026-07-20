@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+         int maxprofit = 0;
+ int cheapest = INT_MAX;
+  int i = 0;
+ while (i < prices.size()) {
+     if (prices[i] < cheapest) { cheapest = prices[i]; }
+     else {
+         if (maxprofit < prices[i] - cheapest) {
+             maxprofit = prices[i] - cheapest;
+         }
+     }i++;
+ }
+ return maxprofit;
+    }
+};
+/*
+Notes: The algorithm tracks the lowest price seen so far (cheapest) while scanning prices left to right, and for each higher price it checks if selling at that price minus cheapest returns a bigger profit than the current maxprofit.
+*/
