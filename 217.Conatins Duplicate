@@ -12,5 +12,5 @@ public:
     }
 };
 /*
-again used unordered map to keep account of frequncy of each number incase a number already is in map then instead of continuing checking for rest we return true
+again used unordered set to keep account of frequncy of each number incase a number already is in it then instead of continuing checking for rest we return true
 */
