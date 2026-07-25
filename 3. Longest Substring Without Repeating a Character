@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        string subs = "";
+int l = 0;
+for (auto x : s) {
+    if (subs.find(x) ==string::npos) {
+        subs += x;
+    }
+    else {
+        size_t duplicate_pos = subs.find(x);
+        subs.erase(0,duplicate_pos+1);
+        subs += x;
+    }
+    if (subs.size() > l) {
+        l = subs.size();
+    }
+}
+return l;
+    }
+};
