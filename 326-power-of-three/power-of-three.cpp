@@ -1,16 +1,8 @@
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        if (n<1 or n%2==0){ //if even number or less than 1
-            return false;
-        }
-        // int m=pow(3,19);
-        // if (m%n==0){
-        //     return true;
-        // }
-        // return false;
-        if (n==1){return true;}
-        return n%3==0 && isPowerOfThree(n/3);
+        // 1162261467 is 3^19, the largest power of 3 that fits in a signed 32-bit int
+        return n > 0 && 1162261467 % n == 0;
  
     }
 };
