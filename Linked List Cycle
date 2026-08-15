@@ -1,0 +1,38 @@
+Submissions Detail -
+Linked List Cycle
+Accepted
+29 / 29 testcases passed
+Arisha
+Arisha
+submitted at Aug 15, 2026 15:51
+
+Solution
+Runtime 8ms Beats 81.93% Memory 11.87MB Beats 54.23%
+Code C++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(!head){return false;}
+        ListNode*walker=head;
+        ListNode*runner=head;
+        while(runner!=nullptr && runner->next!=nullptr){
+         runner=runner->next->next;
+         walker=walker->next;
+         if(runner==walker){
+            return true;
+         }
+        }
+        return false;
+    }
+};
+
+ 
+
