@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int leastInterval(std::vector<char>& tasks, int n) {
+        unordered_map<char, int> freqMap;
+        int maxFreq = 0;
+        for (char task : tasks) {
+            freqMap[task]++;
+            maxFreq = max(maxFreq, freqMap[task]);
+        }
+        int maxFreqCount = 0;
+        for (auto& [task, count] : freqMap) {
+            if (count == maxFreq) {
+                maxFreqCount++;
+            }
+        } 
+        int emptySlots = (maxFreq - 1) * (n + 1) + maxFreqCount;
+        return max(emptySlots, static_cast<int>(tasks.size()));
+    }
+};
