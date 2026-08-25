@@ -1,0 +1,33 @@
+class Solution {
+private:
+    struct Compare {
+        bool operator()(ListNode* a, ListNode* b) {
+            return a->val > b->val; 
+        }
+    };
+
+public:
+    ListNode* mergeKLists(std::vector<ListNode*>& lists) {
+        Min-heap storing ListNode pointers using our custom comparator
+        priority_queue<ListNode*, std::vector<ListNode*>, Compare> minHeap;
+        for (ListNode* listHead : lists) {
+            if (listHead != nullptr) {
+                minHeap.push(listHead);
+            }
+        }
+        ListNode dummy(0);
+        ListNode* tail = &dummy;
+        while (!minHeap.empty()) {
+            ListNode* smallest = minHeap.top();
+            minHeap.pop();
+
+            tail->next = smallest;
+            tail = tail->next;
+            if (smallest->next != nullptr) {
+                minHeap.push(smallest->next);
+            }
+        }
+
+        return dummy.next;
+    }
+};
